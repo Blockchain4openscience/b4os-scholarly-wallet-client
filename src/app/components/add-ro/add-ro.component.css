@@ -1,0 +1,11 @@
+.step-content {
+  margin: 10px auto;
+  text-align: center;
+  min-width: 100%;
+}
+
+
+.back-button {
+  float: left;
+  margin-left: -24px;
+}

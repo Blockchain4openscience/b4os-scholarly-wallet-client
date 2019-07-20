@@ -1,0 +1,101 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-toolbar {
+  background-color: #320b86;
+}
+
+.app-title {
+  color: white;
+  font-family: Cousine;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.logo {
+  height: 40px;
+  padding-right: 10px;
+}
+
+/*
+ * Actual Sticky Footer Styles
+ */
+
+.all-wrap {
+  min-height: 100vh;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #320b86;
+}
+
+.content {
+  flex: 1;
+  background-color: white;
+  margin: 10px auto;
+  clip-path: polygon(
+    2% 0%,
+    100% 0%,
+    100% 0%,
+    100% 98%,
+    98% 100%,
+    0% 100%,
+    0% 100%,
+    0% 2%
+  );
+  padding: 10px;
+  min-width: 80%;
+  max-width: 1200px;
+}
+
+/*
+ * Make the component injected by <router-outlet> full height:
+ */
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main > *:not(router-outlet) {
+  flex: 1;
+  display: block;
+}
+
+footer {
+  background-color: #3c3c3c;
+  color: whitesmoke;
+  padding-left: 20px;
+}
+
+.bar-spacer {
+  flex: 1 1 auto;
+}
+
+.back-button {
+  position: absolute;
+  top: 71px;
+  left: 6%;
+}
+
+.back-button > span > .mat-icon {
+  font-size: x-large !important;
+}

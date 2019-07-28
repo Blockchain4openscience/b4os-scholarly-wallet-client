@@ -1,1 +1,9 @@
-<b4os-dashboard [cards]="claimedResearchObjects"></b4os-dashboard>
+<mat-tab-group mat-align-tabs="center" color="accent">
+  <mat-tab>
+      <ng-template mat-tab-label class="main">
+          Research Objects
+        </ng-template>
+    <b4os-dashboard [cards]="claimedResearchObjects"> </b4os-dashboard>
+  </mat-tab>
+  <mat-tab label="Discos">Content 2</mat-tab>
+</mat-tab-group>

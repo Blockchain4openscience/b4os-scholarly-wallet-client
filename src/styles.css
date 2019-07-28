@@ -5,3 +5,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 .fa, .fas, .far, .fal, .fab {
   font-size: 24px;
 }
+
+.mat-list .mat-list-item.center .mat-list-item-content{
+  justify-content: center;
+}
+
+
+.mat-tab-header {
+  border-bottom: none;
+}
+
+.mat-ink-bar {
+  height: 4px !important;
+}
+
+.mat-tab-label .mat-tab-label-content {
+  font-size: 21px;
+}

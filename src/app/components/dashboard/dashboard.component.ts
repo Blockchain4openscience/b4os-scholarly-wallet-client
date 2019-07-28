@@ -14,6 +14,14 @@ export class DashboardComponent {
   @Input()
   cards = [];
 
+
+  languageIcons = {
+    python: 'fa-python',
+    html: 'fa-html5',
+    javascript: 'fa-js',
+    java: 'fa-java'
+  };
+
   columnNumber: Observable<number> = of(6);
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {
     this.breakpointObserver.observe([Breakpoints.HandsetPortrait]).subscribe(state => {
@@ -35,7 +43,7 @@ export class DashboardComponent {
       .observe([Breakpoints.Large])
       .subscribe(state => {
         if (state.matches) {
-          this.columnNumber = of(4);
+          this.columnNumber = of(5);
         }
       });
   }

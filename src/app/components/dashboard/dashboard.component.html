@@ -1,44 +1,28 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Research Objects</h1>
   <mat-grid-list [cols]="columnNumber | async">
     <mat-grid-tile *ngFor="let card of cards" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
+          <div mat-card-avatar class="header-image"></div>
           <mat-card-title>
             {{ card.name }}
           </mat-card-title>
+          <mat-card-subtitle>
+              <mat-icon fontSet="fab" [fontIcon]="languageIcons[card.language | lowercase]" matTooltip="{{ card.language }}"></mat-icon>
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div *ngIf="!!card.description">
-            Description: {{ card.description }}
+            {{ card.description }}
           </div>
           <div *ngIf="!!card.language">Language: {{ card.language }}</div>
           <div>Forks: {{ card.forks_count }}</div>
         </mat-card-content>
+        <mat-action-list>
+          <mat-icon>
+
+          </mat-icon>
+        </mat-action-list>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <button
-        mat-fab
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <a mat-menu-item routerLink="/main/add">
-          <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
-          <span>GitHub</span>
-        </a>
-        <button mat-menu-item>
-          <mat-icon fontSet="fab" fontIcon="fa-slideshare"></mat-icon>
-          <span>SlideShare</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon fontSet="fab" fontIcon="fa-dropbox"></mat-icon>
-          <span>DropBox</span>
-        </button>
-      </mat-menu>
-    </mat-grid-tile>
   </mat-grid-list>
-</div>

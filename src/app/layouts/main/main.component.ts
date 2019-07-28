@@ -5,7 +5,7 @@ import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, startWith, share } from 'rxjs/operators';
 
 @Component({
   selector: 'b4os-main',
@@ -18,9 +18,7 @@ export class MainComponent implements OnInit {
   user: any;
   isHome = true;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.HandsetPortrait)
-    .pipe(map(result => result.matches));
+  isHandset$: Observable<boolean>;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -31,7 +29,15 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.url.subscribe(result => this.isHome = this.router.url.endsWith('home'));
+    this.isHandset$ = this.breakpointObserver
+    .observe(Breakpoints.HandsetPortrait)
+    .pipe(
+      map(result => result.matches),
+      startWith(false)
+    );
+    this.activatedRoute.url.subscribe(
+      result => (this.isHome = this.router.url.endsWith('home'))
+    );
     this.isLoggedIn = this.storageService.read('isLoggedIn');
     this.user = this.storageService.read('user');
     this.authService.loggedIn.subscribe(result => {

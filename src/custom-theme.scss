@@ -11,9 +11,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$b4os-scholarly-wallet-client-primary: mat-palette($mat-deep-purple, 500);
+$b4os-scholarly-wallet-client-primary: mat-palette($mat-cyan, 300);
 $b4os-scholarly-wallet-client-accent: mat-palette(
-  $mat-yellow,
+  $mat-indigo,
   A700,
   A800,
   A900

@@ -7,7 +7,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatMenuModule, MatGridListModule, MatCardModule, MatDialogModule, MatStepperModule, MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatGridListModule,
+  MatCardModule,
+  MatDialogModule,
+  MatStepperModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatCheckboxModule,
+  MatTabsModule,
+  MatTooltipModule,
+  MatBadgeModule,
+} from '@angular/material';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './layouts/main/main.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -17,6 +35,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddRoComponent } from './components/add-ro/add-ro.component';
 import { RepositoriesTableComponent } from './components/repositories-table/repositories-table.component';
 import { CreateDiscoComponent } from './components/create-disco/create-disco.component';
+import { RoTableComponent } from './components/ro-table/ro-table.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -30,6 +50,7 @@ import { CreateDiscoComponent } from './components/create-disco/create-disco.com
     AddRoComponent,
     RepositoriesTableComponent,
     CreateDiscoComponent,
+    RoTableComponent
   ],
   imports: [
     BrowserModule,
@@ -52,12 +73,14 @@ import { CreateDiscoComponent } from './components/create-disco/create-disco.com
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatBadgeModule,
+    DragDropModule
   ],
-  entryComponents: [
-    AddRoComponent
-  ],
+  entryComponents: [AddRoComponent],
   providers: [AuthService, HttpClientModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

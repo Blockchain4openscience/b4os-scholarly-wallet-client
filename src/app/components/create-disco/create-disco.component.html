@@ -1,1 +1,17 @@
-<div id="paper"></div>
+<mat-drawer-container class="example-container" autosize cdkDropListGroup>
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened="true" position="end">
+        <mat-list cdkDropList [cdkDropListData]="claimedResearchObjects">
+            <mat-list-item [cdkDragData]="ro" *ngFor="let ro of claimedResearchObjects" cdkDrag>
+                <mat-icon mat-list-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>
+                <h4 mat-line>{{ro.full_name}}</h4>
+                <p mat-line> {{ro.created_at | date}} </p>
+            </mat-list-item>
+          </mat-list>
+    </mat-drawer>
+
+    <div id="paper-container" class="example-sidenav-content" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="discoROs">
+      <div id="path"></div>
+        <div id="paper"></div>
+    </div>
+
+  </mat-drawer-container>

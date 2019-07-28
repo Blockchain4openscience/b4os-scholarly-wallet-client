@@ -17,7 +17,7 @@
 }
 
 .dashboard-card-content {
-  text-align: center;
+
 }
 
 
@@ -29,4 +29,10 @@
 
 .ro-adder {
   text-align: center;
+}
+
+
+.header-image {
+  background-image: url('/assets/img/github.png');
+  background-size: cover;
 }

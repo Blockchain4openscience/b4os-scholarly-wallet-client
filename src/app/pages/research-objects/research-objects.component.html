@@ -1,0 +1,52 @@
+<div class="content">
+  <h1 class="header">Research Objects</h1>
+  <!-- <mat-tab-group>mat-tab-group mat-align-tabs="center" color="accent">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon" fontSet="fab" fontIcon="fa-github"></mat-icon>
+        GitHub
+      </ng-template>
+      <b4os-repositories-table source="github" claimable="true"></b4os-repositories-table>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon" fontSet="ai" fontIcon="ai-orcid"></mat-icon>
+        ORCID
+      </ng-template>
+      <b4os-repositories-table source="orcid"></b4os-repositories-table>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon" fontSet="ai" fontIcon="ai-figshare"></mat-icon>
+        Figshare
+      </ng-template>
+      <b4os-repositories-table source="figshare" claimable="true"></b4os-repositories-table>
+    </mat-tab>
+  </mat-tab-group> -->
+  <nav mat-tab-nav-bar mat-align-tabs="center" color="accent">
+    <a mat-tab-link
+    [routerLink]="['github']"
+    routerLinkActive #rlag="routerLinkActive"
+    [active]="rlag.isActive">
+    GitHub
+  </a>
+  <a mat-tab-link
+  [routerLink]="['orcid']"
+  routerLinkActive #rlao="routerLinkActive"
+  [active]="rlao.isActive">
+  ORCID
+</a>
+<a mat-tab-link
+  [routerLink]="['figshare']"
+  routerLinkActive #rlaf="routerLinkActive"
+  [active]="rlaf.isActive">
+Figshare
+</a>
+</nav>
+<div [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']">
+  <router-outlet #o="outlet"></router-outlet>
+</div>
+</div>
+

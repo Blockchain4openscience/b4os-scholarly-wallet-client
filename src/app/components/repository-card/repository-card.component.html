@@ -1,0 +1,22 @@
+<mat-card class="dashboard-card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>
+      {{ repository.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <mat-icon fontSet="fab" [fontIcon]="languageIcons[repository.language | lowercase]" matTooltip="{{ repository.language }}"></mat-icon>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div *ngIf="!!repository.description">
+      {{ repository.description }}
+    </div>
+    <div *ngIf="!!repository.language">Language: {{ repository.language }}</div>
+  </mat-card-content>
+  <mat-action-list>
+    <mat-icon>
+
+    </mat-icon>
+  </mat-action-list>
+</mat-card>

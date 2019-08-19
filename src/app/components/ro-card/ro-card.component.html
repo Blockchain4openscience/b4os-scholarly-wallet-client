@@ -1,0 +1,13 @@
+
+<div [ngSwitch]="source">
+  <b4os-repository-card [repository]="ro" *ngSwitchCase="'github'">
+
+  </b4os-repository-card>
+  <b4os-publication-card [publication]="ro" *ngSwitchCase="'orcid'">
+
+  </b4os-publication-card>
+
+  <b4os-article-card [publication]="ro" *ngSwitchCase="'figshare'">
+
+  </b4os-article-card>
+</div>

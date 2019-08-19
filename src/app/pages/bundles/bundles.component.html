@@ -1,0 +1,65 @@
+<h1 class="header">Research Objects Bundles</h1>
+<div class="container" id="tableTop" [hidden]="notFound" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div class="loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="table-controllers">
+    <div>
+      <a mat-raised-button color="accent" class="add-button" [routerLink]="['/bundle']" >
+        <mat-icon>add</mat-icon> CREATE BUNDLE
+      </a>
+    </div>
+  </div>
+
+  <div
+   *ngIf="!notFound"
+    fxLayout="row wrap"
+    fxLayout.lt-sm="column"
+    fxLayoutGap="32px"
+    fxLayoutAlign="stretch" style="width: 100%;">
+    <mat-card *ngFor="let bundle of bundles" class="repo-card"
+    fxFlex="0 1 calc(33.3% - 32px)"
+    fxFlex.lt-md="0 1 calc(50% - 32px)"
+    fxFlex.lt-sm="100%">
+    <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>
+          {{ bundle.name }}
+        </mat-card-title>
+      </mat-card-header>
+      <!-- <img mat-card-image src="{{bundle.thumb}}" alt="Photo of a Shiba Inu"> -->
+      <mat-card-content class="dashboard-card-content">
+        <div *ngIf="!!bundle.description">
+          {{ bundle.description }}
+        </div>
+      </mat-card-content>
+      <mat-action-list>
+        <a mat-mini-fab [routerLink]="['/bundle/' + bundle.id]">
+            <mat-icon class="mat-18">create</mat-icon>
+        </a>
+        <button mat-mini-fab>
+          <mat-icon class="mat-18">publish</mat-icon>
+        </button>
+        <button mat-mini-fab>
+            <mat-icon class="mat-18">share</mat-icon>
+          </button>
+      </mat-action-list>
+  </mat-card>
+  </div>
+
+  <div [hidden]="isLoadingResults || notFound" class="bottom-pag">
+    <mat-paginator #paginatorBottom class="full-width-paginator"
+    [showFirstLastButtons]="true"
+    [length]="resultsLength"
+    [pageIndex]="0"
+    [pageSize]="6"
+    [pageSizeOptions]="[6, 12, 24]"
+    (page)="scrollToTop()"
+    >
+  </mat-paginator>
+  </div>
+  <div [hidden]="!notFound" class="not-found-alert">
+      <h2>NO BUNDLES FOUND</h2>
+    </div>
+  </div>
+

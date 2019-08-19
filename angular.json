@@ -29,8 +29,10 @@
               "node_modules/jointjs/css/layout.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/jointjs/dist/joint.js"
+              "node_modules/lodash.memoize/index.js",
+              "node_modules/cytoscape/dist/cytoscape.min.js",
+              "node_modules/cytoscape-edgehandles/cytoscape-edgehandles.js",
+              "node_modules/cytoscape-cxtmenu/cytoscape-cxtmenu.js"
             ]
           },
           "configurations": {

@@ -20,23 +20,30 @@ export class AuthService {
   loggedIn: EventEmitter<boolean> = new EventEmitter();
 
   login(code) {
-    const url = `auth/orcid?orcid_auth_code=${code}`;
-    this.http.get(url).subscribe(result => {
-      this.storageService.write('user', result);
+    const url = `api/auth/orcid?orcid_auth_code=${code}`;
+    this.http.get(url).subscribe((result: any) => {
+      this.storageService.write('jwt-token', result.access_token);
       this.storageService.write('isLoggedIn', true);
-      this.loggedIn.next(true);
-      this.router.navigate(['home']);
-      this.roService.list().subscribe(ros => this.storageService.write('claimed', ros));
+      this.http.get(`api/profile`).subscribe(user => {
+        this.storageService.write('user', user);
+        this.loggedIn.next(true);
+        this.router.navigate(['/research-objects/github']);
+        this.roService
+          .all()
+          .subscribe(ros => this.storageService.write('claimed', ros));
+      });
     });
   }
 
   isLoggedIn() {
-    return localStorage.getItem('isLoggedin') !== null;
+    return localStorage.getItem('isLoggedIn') !== null;
   }
 
   logout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
+    localStorage.removeItem('jwt-token');
     localStorage.removeItem('claimed');
+    this.router.navigate(['/home']);
   }
 }

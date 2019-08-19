@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { slideInAnimation } from './../../route-animations';
-import { AuthService } from './../../services/auth.service';
-import { StorageService } from './../../services/storage.service';
+import { slideInAnimation } from '../../route-animations';
+import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';

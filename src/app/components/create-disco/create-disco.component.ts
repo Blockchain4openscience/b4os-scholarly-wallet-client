@@ -12,11 +12,11 @@ import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
   styleUrls: ['./create-disco.component.css']
 })
 export class CreateDiscoComponent implements OnInit, AfterViewInit {
-  claimedResearchObjects = [];
-  discoROs = [];
+  claimedResearchObjects: any;
+  discoROs: any;
   paper: any;
   graph: any;
-  pathLinks = [];
+  pathLinks: any;
   selected: any;
   attrs = {
     elementDefault: {
@@ -55,7 +55,7 @@ export class CreateDiscoComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.roService.list().subscribe(ros => (this.claimedResearchObjects = ros));
+    this.roService.all().subscribe(ros => (this.claimedResearchObjects = ros));
     joint.setTheme('material');
   }
 

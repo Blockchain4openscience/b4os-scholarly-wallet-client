@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private storageService: StorageService, private authService: AuthService, private roService: ResearchObjectsService) { }
 
   ngOnInit() {
-    this.roService.list().subscribe(ros => this.claimedResearchObjects = ros);
+
   }
 
 }

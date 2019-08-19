@@ -1,34 +1,11 @@
-<mat-horizontal-stepper linear="true" #stepper>
-    <mat-step>
-        <ng-template matStepLabel>Connect with GitHub</ng-template>
-        <div class='step-content'>
-            <a mat-raised-button href='https://github.com/login/oauth/authorize?scope=user:email&client_id=8442d1cbd0110eb451db' color="primary"><mat-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>&nbsp;CONNECT YOUR GITHUB ACCOUNT</a>
-        </div>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Select your repos</ng-template>
-        <mat-selection-list #selectedRepositories>
-            <mat-list-option *ngFor="let repository of repositories | async" [value]="repository">
-                <mat-icon mat-list-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>
-                <h4 mat-line>{{repository.full_name}}</h4>
-                <p mat-line> {{repository.created_at | date}} </p>
-            </mat-list-option>
-          </mat-selection-list>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Import to Scholarly Wallet</ng-template>
-      <mat-list>
-          <mat-list-item *ngFor="let repository of selectedRepositories.selectedOptions.selected">
-              <mat-icon mat-list-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>
-              <h4 mat-line>{{repository.value.full_name}}</h4>
-              <p mat-line> {{repository.value.created_at | date}} </p>
-          </mat-list-item>
-        </mat-list>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" style="float: right;" (click)="claim(selectedRepositories.selectedOptions.selected)"><mat-icon>outlined_flag</mat-icon>&nbsp;CLAIM {{selectedRepositories.selectedOptions.selected.lenght}} RESEARCH OBJECTS</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+<div class="add-ro-container mat-elevation-z1">
+    <a *ngIf="loading" mat-raised-button href='https://github.com/login/oauth/authorize?scope=user:email&client_id=8442d1cbd0110eb451db' color="primary"><mat-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>&nbsp;CONNECT YOUR GITHUB ACCOUNT</a>
+    <mat-selection-list #selectedRepositories>
+      <mat-list-option *ngFor="let repository of repositories" [value]="repository">
+        <mat-icon mat-list-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>
+        <h4 mat-line>{{repository.full_name}}</h4>
+        <p mat-line> {{repository.created_at | date}} </p>
+      </mat-list-option>
+    </mat-selection-list>
+    <button *ngIf="!loading" [disabled]="selectedRepositories.selectedOptions.selected.lenght === 0" mat-raised-button color="primary" style="float: right;" (click)="claim(selectedRepositories.selectedOptions.selected)"><mat-icon>outlined_flag</mat-icon>&nbsp;CLAIM {{selectedRepositories.selectedOptions.selected.lenght}} RESEARCH OBJECTS</button>
+</div>

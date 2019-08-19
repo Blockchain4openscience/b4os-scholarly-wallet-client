@@ -15,10 +15,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   border-bottom: none;
 }
 
-.mat-ink-bar {
+/* .mat-ink-bar {
   height: 4px !important;
-}
+} */
 
 .mat-tab-label .mat-tab-label-content {
   font-size: 21px;
+}
+
+
+mat-icon.ai {
+  font-size: 24px !important;
 }

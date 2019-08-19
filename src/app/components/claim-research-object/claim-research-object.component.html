@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Claiming from {{source | titlecase}}</h1>
+<div mat-dialog-content>
+  <div class="example-loading-shade" *ngIf="claiming">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-selection-list #selectedCandidates >
+    <ng-template [ngIf]="source === 'github'">
+      <mat-list-option *ngFor="let candidate of candidates" [value]="candidate">
+        <mat-icon mat-list-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>
+        <h4 mat-line>{{candidate.full_name}}</h4>
+        <p mat-line> {{candidate.created_at | date}} </p>
+      </mat-list-option>
+    </ng-template>
+
+    <ng-template [ngIf]="source === 'figshare'">
+        <mat-list-option *ngFor="let candidate of candidates" [value]="candidate">
+            <mat-icon mat-list-icon fontSet="ai" fontIcon="ai-figshare"></mat-icon>
+            <h4 mat-line>{{candidate.title}}</h4>
+            <p mat-line> {{candidate.defined_type_name | titlecase}} </p>
+          </mat-list-option>
+    </ng-template>
+
+  </mat-selection-list>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial [disabled]="claiming">CANCEL</button>
+  <button [disabled]="selectedCandidates.selectedOptions.selected.length === 0" mat-raised-button color="primary" (click)="claim(selectedCandidates.selectedOptions.selected)" ><mat-icon>outlined_flag</mat-icon>&nbsp;CLAIM {{selectedCandidates.selectedOptions.selected.length}} RESEARCH OBJECTS</button>
+</div>

@@ -1,0 +1,99 @@
+.full-width-table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  text-align: center;
+}
+
+.add-button {
+  float: right;
+}
+
+
+.card-cell {
+  border: none;
+  padding: 10px;
+}
+
+
+.table-controllers {
+  max-width: 90%;
+  margin-left: auto;
+}
+
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  min-height: 66vh;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 60px;
+}
+
+.sort {
+ padding: 0 20px;
+}
+
+.inverted {
+  transform: scaleY(-1);
+  -moz-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  -ms-transform: scaleY(-1);
+}
+
+.bottom-pag {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.not-found-alert {
+  color: red;
+  text-align: center;
+  width: 100%;
+}
+
+
+.repository-adder {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+}
+
+.repo-card {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.header-image {
+  background-image: url('/assets/img/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+mat-action-list {
+  float: right;
+}
+
+mat-action-list > * {
+  margin-left: 5px;
+}

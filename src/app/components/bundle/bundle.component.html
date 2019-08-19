@@ -1,0 +1,69 @@
+<mat-drawer-container class="example-container" autosize cdkDropListGroup>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true" position="end">
+
+    <mat-expansion-panel *ngFor="let section of sections" class="sidenav-section">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{section | titlecase}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div [ngSwitch]="section">
+        <div *ngSwitchCase="'figshare'">
+          <mat-list cdkDropList #figshareList="cdkDropList" [cdkDropListConnectedTo]="[bundleList]" [cdkDropListData]="claimedResearchObjects[section]" dense>
+            <mat-list-item [cdkDragData]="{url: ro.url, name: ro.title, source: section, ro: ro}" *ngFor="let ro of claimedResearchObjects[section]" cdkDrag>
+              <mat-icon  mat-list-icon fontSet="ai" fontIcon="ai-figshare"></mat-icon>
+              <h4 mat-line>{{ro.title}}</h4>
+              <p mat-line> {{ro.doi}} </p>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div *ngSwitchCase="'github'">
+          <mat-list cdkDropList #githubList="cdkDropList" [cdkDropListConnectedTo]="[bundleList]" [cdkDropListData]="claimedResearchObjects[section]" dense>
+            <mat-list-item [cdkDragData]="{url: ro.html_url, 'name': ro.name, source: section, ro: ro}" *ngFor="let ro of claimedResearchObjects[section]" cdkDrag>
+              <mat-icon  mat-list-icon fontSet="fab" fontIcon="fa-github-square"></mat-icon>
+              <h4 mat-line>{{ro.full_name}}</h4>
+              <p mat-line> {{ro.created_at | date}} </p>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div *ngSwitchCase="'orcid'">
+          <mat-list cdkDropList  #orcidList="cdkDropList" [cdkDropListConnectedTo]="[bundleList]" [cdkDropListData]="claimedResearchObjects[section]" dense>
+            <mat-list-item [cdkDragData]="{url: ro.doi, name: ro.title, source: section, ro: ro}" *ngFor="let ro of claimedResearchObjects[section]" cdkDrag>
+              <mat-icon  mat-list-icon fontSet="ai" fontIcon="ai-orcid"></mat-icon>
+              <h4 mat-line>{{ro.title}}</h4>
+              <p mat-line> {{ro.doi}} </p>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+
+  </mat-drawer>
+
+  <div class="page-wrap">
+    <div class="content">
+      <div class="bundle-name">
+        <form class="example-form" fxLayout="row" fxLayoutGap="32px" fxLayoutAlign="stretch" [formGroup]="metadata">
+          <mat-form-field class="example-full-width"   fxFlex="0 1 calc(30% - 32px)">
+            <input matInput placeholder="Bundle name" formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="example-full-width"   fxFlex="0 1 calc(70% - 32px)">
+              <input matInput placeholder="Bundle description" formControlName="description">
+            </mat-form-field>
+        </form>
+      </div>
+      <div id="paper-container" class="mat-elevation-z1" cdkDropList #bundleList="cdkDropList" [cdkDropListConnectedTo]="[orcidList, githubList, figshareList]"  (cdkDropListDropped)="drop($event)" [cdkDropListData]="discoROs">
+        <div id="cy"></div>
+        <button mat-mini-fab (click)="delete()" [disabled]="!selection" color="warn" class="delete-button"><mat-icon>delete</mat-icon></button>
+        <button mat-mini-fab (click)="save()" [disabled]="!changed" color="accent" class="save-button"><mat-icon>save</mat-icon></button>
+      </div>
+    </div>
+
+  </div>
+
+</mat-drawer-container>

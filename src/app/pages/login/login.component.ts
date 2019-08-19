@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       ) {
         this.authService.login(code);
       } else {
-        this.router.navigate(['home'], {});
+        this.router.navigate(['/research-objects/github'], {});
       }
     });
   }

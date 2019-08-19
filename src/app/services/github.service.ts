@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
 
@@ -8,12 +7,30 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GithubService {
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {}
 
-  constructor(private http: HttpClient, private storageService: StorageService) { }
-
-  getRepos(code): Observable<Array<any>> {
+  authenticate(code): Observable<Array<any>> {
     const user = this.storageService.read('user');
-    const url = `auth/github?code=${code}&orcid=${user.orcid}`;
+    const url = `api/auth/github?code=${code}&orcid=${user.orcid}`;
+    return this.http.get(url) as Observable<Array<any>>;
+  }
+
+  getRepos(start, size): Observable<Array<any>> {
+    const user = this.storageService.read('user');
+    const url = `api/${
+      user.orcid
+    }/github/list?start=${start}&size=${size}`;
+    return this.http.get(url) as Observable<Array<any>>;
+  }
+
+  getAllRepos() {
+    const user = this.storageService.read('user');
+    const url = `api/${
+      user.orcid
+    }/github/all`;
     return this.http.get(url) as Observable<Array<any>>;
   }
 }

@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:4200/',
-  serviceUrl: 'http://localhost:8000'
+  serviceUrl: 'http://localhost:8000',
+  githubAuthUrl: 'https://github.com/login/oauth/authorize?scope=user:email&client_id=8442d1cbd0110eb451db',
+  figshareAuthUrl: 'https://figshare.com/account/applications/authorize?client_id=a2d29a16e44e944484050e59f5e066f9517e9a80&redirect_uri=https%3A%2F%2Flocalhost%3A4200%2Fresearch-objects%2Ffigshare&response_type=code'
 };
 
 /*

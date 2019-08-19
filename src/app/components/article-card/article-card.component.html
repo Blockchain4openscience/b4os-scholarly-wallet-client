@@ -1,0 +1,21 @@
+<mat-card class="dashboard-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>
+        {{ publication.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ publication.defined_type_name | titlecase}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div *ngIf="!!publication.doi">
+        {{ publication.doi }}
+      </div>
+    </mat-card-content>
+    <mat-action-list>
+      <mat-icon>
+
+      </mat-icon>
+    </mat-action-list>
+  </mat-card>

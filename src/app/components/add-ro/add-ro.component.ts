@@ -4,6 +4,7 @@ import { GithubService } from './../../services/github.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Repository } from 'src/app/models/repository.model';
 
 @Component({
   selector: 'b4os-add-ro',
@@ -11,7 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./add-ro.component.css']
 })
 export class AddRoComponent implements OnInit {
-  repositories: Observable<Array<any>>;
+  repositories: Repository[];
+  loading = true;
   selectedRepositories = [];
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,19 +27,25 @@ export class AddRoComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       const code = params.code;
       if (typeof code !== 'undefined') {
-        this.repositories = this.githubService.getRepos(code);
+        this.githubService.authenticate(code).subscribe(repos => {
+          this.repositories = repos;
+          this.loading = false;
+        });
       }
     });
   }
 
   claim(researchObjects: Array<any>) {
-    this.researchObjectsService.claim(
-      researchObjects.map(option => option.value)
-    ).subscribe(result => {
-      if (result) {
-        this.router.navigate(['home'], {});
-        this.storageService.write('claimed', researchObjects.map(option => option.value));
-      }
-    });
+    this.researchObjectsService
+      .claim(researchObjects.map(option => option.value), 'github')
+      .subscribe(result => {
+        if (result) {
+          this.router.navigate(['/research-objects'], {});
+          this.storageService.write(
+            'claimed',
+            researchObjects.map(option => option.value)
+          );
+        }
+      });
   }
 }

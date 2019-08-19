@@ -9,3 +9,20 @@
   float: left;
   margin-left: -24px;
 }
+
+
+.add-ro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+  align-items: center;
+}
+
+a {
+  max-width: 300px;
+}
+button {
+  max-width: 300px;
+}

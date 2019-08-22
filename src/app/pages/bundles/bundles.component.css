@@ -78,22 +78,3 @@
   z-index: 10;
   display: flex;
 }
-
-.repo-card {
-  padding: 10px;
-  margin-top: 10px;
-}
-
-.header-image {
-  background-image: url('/assets/img/logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-mat-action-list {
-  float: right;
-}
-
-mat-action-list > * {
-  margin-left: 5px;
-}

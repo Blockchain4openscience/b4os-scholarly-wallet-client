@@ -1,0 +1,36 @@
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+mat-action-list {
+  text-align: right;
+}
+
+mat-action-list > * {
+  margin-left: 5px;
+}
+
+
+mat-spinner {
+  top: 40%;
+}
+
+.repo-card {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.header-image {
+  background-image: url('/assets/img/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

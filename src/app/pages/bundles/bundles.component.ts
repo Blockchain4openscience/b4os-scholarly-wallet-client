@@ -1,7 +1,13 @@
 import { MatPaginator } from '@angular/material';
 import { DiscosService } from 'src/app/services/discos.service';
-import { Component, OnInit, EventEmitter, AfterViewInit, ViewChild } from '@angular/core';
-import { merge, of as observableOf} from 'rxjs';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  AfterViewInit,
+  ViewChild
+} from '@angular/core';
+import { merge, of as observableOf } from 'rxjs';
 import { startWith, switchMap, catchError, map } from 'rxjs/operators';
 
 @Component({
@@ -10,7 +16,6 @@ import { startWith, switchMap, catchError, map } from 'rxjs/operators';
   styleUrls: ['./bundles.component.css']
 })
 export class BundlesComponent implements OnInit, AfterViewInit {
-
   @ViewChild('paginatorBottom', { static: false })
   paginatorBottom: MatPaginator;
 
@@ -19,10 +24,9 @@ export class BundlesComponent implements OnInit, AfterViewInit {
   bundles = [];
   resultsLength = 0;
 
-  constructor(private disco: DiscosService) { }
+  constructor(private disco: DiscosService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     merge(() => {
@@ -62,5 +66,4 @@ export class BundlesComponent implements OnInit, AfterViewInit {
       window.scrollTo(0, c - c / 8);
     }
   }
-
 }

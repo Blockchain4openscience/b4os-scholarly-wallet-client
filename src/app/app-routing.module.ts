@@ -64,7 +64,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       { path: 'bundle', component: BundleComponent, canActivate: [AuthGuard] },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      {
+        path: '**',
+        redirectTo: '/home'
+      }
     ]
   },
   {

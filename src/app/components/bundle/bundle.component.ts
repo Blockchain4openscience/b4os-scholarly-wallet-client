@@ -39,9 +39,14 @@ export class BundleComponent implements OnInit, AfterViewInit {
   diagram = defaults;
 
   layoutOptions = {
-    name: 'cose',
+    name: 'klay',
     animate: false,
-    nodeDimensionsIncludeLabels: true
+    nodeDimensionsIncludeLabels: true,
+    padding: 20,
+    klay: {
+      borderSpacing: 50,
+      spacing: 30
+    }
   };
 
   constructor(
@@ -112,7 +117,7 @@ export class BundleComponent implements OnInit, AfterViewInit {
     });
     this.cy.$('node').on('grab', () => this.changed = true);
     this.cy.resize();
-    this.cy.fit();
+    this.cy.fit(80);
     this.cy.center();
   }
 
@@ -167,6 +172,7 @@ export class BundleComponent implements OnInit, AfterViewInit {
     this.cyLayout.stop();
     this.cyLayout = this.cy.elements().makeLayout(this.layoutOptions);
     this.cyLayout.run();
+    this.cy.fit(80);
   }
 
   save() {
@@ -186,7 +192,8 @@ export class BundleComponent implements OnInit, AfterViewInit {
           name: this.metadata.controls.name.value,
           description: this.metadata.controls.description.value,
           diagram: this.cy.json(),
-          thumb: this.cy.png({full: false})
+          thumb: this.cy.png({full: false}),
+          status: 'unpublished'
         })
         .subscribe(result => {
           this.id = result;

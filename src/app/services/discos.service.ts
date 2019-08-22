@@ -6,6 +6,12 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class DiscosService {
+
+  status(id: any) {
+    const user = this.storageService.read('user');
+    const url = `api/${user.orcid}/discos/${id}/status`;
+    return this.http.get(url, {responseType: 'text'});
+  }
   constructor(
     private http: HttpClient,
     private storageService: StorageService
@@ -28,6 +34,13 @@ export class DiscosService {
     const url = `api/${user.orcid}/discos/${id}/update`;
     return this.http.post(url, disco, { headers });
   }
+
+  publish(id) {
+    const user = this.storageService.read('user');
+    const url = `api/${user.orcid}/discos/${id}/publish`;
+    return this.http.post(url, {}, {responseType: 'text'});
+  }
+
 
   get(id) {
     const user = this.storageService.read('user');

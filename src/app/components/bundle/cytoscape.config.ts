@@ -49,7 +49,7 @@ export const defaults = {
     {
       selector: 'edge',
       style: {
-        'curve-style': 'unbundled-bezier',
+        'curve-style': 'bezier',
         'target-arrow-shape': 'triangle',
         label: 'cites',
         'text-outline-width': 1,

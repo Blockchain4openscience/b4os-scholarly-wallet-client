@@ -3,6 +3,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import cytoscape from 'cytoscape';
 import edgehandles from 'cytoscape-edgehandles';
+import klay from 'cytoscape-klay';
 
 @Component({
   selector: 'b4os-root',
@@ -14,5 +15,6 @@ export class AppComponent {
 
   constructor() {
       cytoscape.use(edgehandles);
+      cytoscape.use(klay);
   }
 }

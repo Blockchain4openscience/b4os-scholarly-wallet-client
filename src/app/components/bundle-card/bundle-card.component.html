@@ -1,0 +1,31 @@
+<mat-card>
+  <div class="loading-shade" *ngIf="bundle.status == 'in progress'">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>
+      {{ bundle.name }}
+    </mat-card-title>
+    <mat-card-subtitle *ngIf='bundle.doi'>
+      <a [attr.href]="'https://sandbox.zenodo.org/record/' + bundle.zenodo_id" target="_blank"><img [attr.src]="'https://sandbox.zenodo.org/badge/DOI/' + bundle.doi +'.svg'" alt="DOI"></a>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <!-- <img mat-card-image src="{{bundle.thumb}}" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content class="dashboard-card-content">
+    <div *ngIf="!!bundle.description">
+      {{ bundle.description }}
+    </div>
+  </mat-card-content>
+  <mat-action-list>
+    <a mat-mini-fab [routerLink]="['/bundle/' + bundle.id]" *ngIf="!bundle.doi">
+      <mat-icon class="mat-18">create</mat-icon>
+    </a>
+    <button mat-mini-fab (click)="publish(bundle)" *ngIf="!bundle.doi">
+      <mat-icon class="mat-18" >publish</mat-icon>
+    </button>
+    <button mat-mini-fab>
+      <mat-icon class="mat-18">share</mat-icon>
+    </button>
+  </mat-action-list>
+</mat-card>

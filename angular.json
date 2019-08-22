@@ -32,7 +32,7 @@
               "node_modules/lodash.memoize/index.js",
               "node_modules/cytoscape/dist/cytoscape.min.js",
               "node_modules/cytoscape-edgehandles/cytoscape-edgehandles.js",
-              "node_modules/cytoscape-cxtmenu/cytoscape-cxtmenu.js"
+              "node_modules/cytoscape-klay/cytoscape-klay.js"
             ]
           },
           "configurations": {

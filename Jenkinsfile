@@ -23,14 +23,11 @@ ng build --prod'''
     }
     stage('deploy') {
       environment {
-        SW_PATH = 'credentials(\'sw-path\')'
+        SW_PATH = credentials('sw-path')
       }
       steps {
         sh 'cp -r dist/* $SW_PATH'
       }
     }
-  }
-  environment {
-    SW_PATH = 'credentials(\'sw-path\')'
   }
 }

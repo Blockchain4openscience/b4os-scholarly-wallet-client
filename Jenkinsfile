@@ -28,6 +28,6 @@ ng build --prod'''
     }
   }
   environment {
-    SW_PATH = 'credentials(\'sw_path\')'
+    SW_PATH = 'credentials(\'sw-path\')'
   }
 }

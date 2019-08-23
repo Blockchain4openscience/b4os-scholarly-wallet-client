@@ -23,7 +23,7 @@ ng build --prod'''
     }
     stage('deploy') {
       steps {
-        sh 'cp -r dist/* credentials(\'sw_path\')'
+        sh 'cp -r dist/* ${credentials(\'sw_path\')}'
       }
     }
   }

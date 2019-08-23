@@ -3,6 +3,9 @@ pipeline {
   stages {
     stage('setup') {
       steps {
+        sh '''. ~/.nvm/nvm.sh
+. ~/.profile
+. ~/.bashrc'''
         sh 'nvm use 12.4.0'
         sh 'npm install'
       }

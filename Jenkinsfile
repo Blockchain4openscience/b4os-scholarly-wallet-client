@@ -7,6 +7,11 @@ pipeline {
         sh 'pwd'
       }
     }
+    stage('setup') {
+      steps {
+        sh 'nvm use 12.4.0'
+      }
+    }
   }
   environment {
     SW_PATH = '/var/www/scholarly-wallet'

@@ -23,11 +23,11 @@ ng build --prod'''
     }
     stage('deploy') {
       steps {
-        sh 'cp -r dist/* ${credentials(\'sw_path\')}'
+        sh 'cp -r dist/* $SW_PATH'
       }
     }
   }
   environment {
-    SW_PATH = '/var/www/scholarly-wallet'
+    SW_PATH = 'credentials(\'sw_path\')'
   }
 }

@@ -13,7 +13,7 @@ pipeline {
       }
     }
   }
-  environment {˘
+  environment {
     SW_PATH = '/var/www/scholarly-wallet'
   }
 }

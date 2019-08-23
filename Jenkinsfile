@@ -6,9 +6,8 @@ pipeline {
         sh '''export NVM_DIR="$HOME/.nvm" # set local path to NVM
 . ~/.nvm/nvm.sh             # add NVM into the Shell session
 nvm use v12.4.0             # choose current version
+npm install
 '''
-        sh 'nvm use 12.4.0'
-        sh 'npm install'
       }
     }
     stage('build') {

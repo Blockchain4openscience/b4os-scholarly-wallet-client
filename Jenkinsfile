@@ -3,11 +3,10 @@ pipeline {
   stages {
     stage('setup') {
       steps {
-        sh '''set +ex                     # immediate script fail off, echo off
-export NVM_DIR="$HOME/.nvm" # set local path to NVM
+        sh '''export NVM_DIR="$HOME/.nvm" # set local path to NVM
 . ~/.nvm/nvm.sh             # add NVM into the Shell session
 nvm use v12.4.0             # choose current version
-set -ex                     # immediate script fail on (default), echo on (default)'''
+'''
         sh 'nvm use 12.4.0'
         sh 'npm install'
       }

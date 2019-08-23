@@ -13,7 +13,12 @@ npm install
     stage('build') {
       steps {
         echo 'BUILD STAGE'
-        sh 'ng build --prod'
+        sh '''set +ex                     # immediate script fail off, echo off
+export NVM_DIR="$HOME/.nvm" # set local path to NVM
+. ~/.nvm/nvm.sh             # add NVM into the Shell session
+nvm use 12.4.0            # choose current version
+set -ex                     # immediate script fail on (default), echo on (default)
+ng build --prod'''
       }
     }
     stage('deploy') {

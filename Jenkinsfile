@@ -12,6 +12,11 @@ pipeline {
         sh 'pwd'
       }
     }
+    stage('deploy') {
+      steps {
+        sh 'ls dist/*/'
+      }
+    }
   }
   environment {
     SW_PATH = '/var/www/scholarly-wallet'

@@ -57,7 +57,7 @@
             </mat-form-field>
         </form>
       </div>
-      <div id="paper-container" class="mat-elevation-z1" cdkDropList #bundleList="cdkDropList" [cdkDropListConnectedTo]="[orcidList, githubList, figshareList]"  (cdkDropListDropped)="drop($event)" [cdkDropListData]="discoROs">
+      <div id="paper-container" class="mat-elevation-z1" cdkDropList #bundleList="cdkDropList"  (cdkDropListDropped)="drop($event)" [cdkDropListData]="discoROs">
         <div id="cy"></div>
         <button mat-mini-fab (click)="delete()" [disabled]="!selection" color="warn" class="delete-button"><mat-icon>delete</mat-icon></button>
         <button mat-mini-fab (click)="save()" [disabled]="!changed" color="accent" class="save-button"><mat-icon>save</mat-icon></button>

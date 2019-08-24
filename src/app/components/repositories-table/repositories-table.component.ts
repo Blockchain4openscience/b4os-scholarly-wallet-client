@@ -62,11 +62,11 @@ export class RepositoriesTableComponent implements AfterViewInit, OnInit {
           .authenticate(this.source, code)
           .subscribe((repos: any[]) => {
             this.candidates = repos;
-            this.isLoadingResults = false;
             const user = this.storageService.read('user');
             user[`${this.source}_access`] = true;
             this.storageService.write('user', user);
             this.openClaimDialog();
+            this.isLoadingResults = false;
           });
       }
     });

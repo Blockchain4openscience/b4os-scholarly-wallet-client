@@ -11,7 +11,7 @@
         <img src='/assets/img/logo.png' class='logo'>
         <span class="app-title">Scholarly Wallet</span>
         <span class="bar-spacer"></span>
-        <a *ngIf="!isLoggedIn" mat-button href="https://orcid.org/oauth/authorize?client_id=APP-NNXW1QUFSJRHMC0C&response_type=code&scope=/authenticate&redirect_uri=https://localhost:4200/login"><img alt="ORCID logo" src="/assets/img/orcid_icon.png" width="24" height="24" hspace="4" />LOGIN WITH ORCID</a>
+        <a *ngIf="!isLoggedIn" mat-button [attr.href]="authUrl" width="24" height="24" hspace="4">LOGIN WITH ORCID</a>
         <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="userMenu"><mat-icon>perm_identity</mat-icon><span *ngIf="!(isHandset$ | async)">&nbsp;{{user.name}}</span></button>
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>

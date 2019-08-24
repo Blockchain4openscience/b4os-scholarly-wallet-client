@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, startWith, share } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'b4os-main',
@@ -17,6 +18,7 @@ export class MainComponent implements OnInit {
   isLoggedIn = false;
   user: any;
   isHome = true;
+  authUrl = environment.orcidAuthUrl;
 
   isHandset$: Observable<boolean>;
 

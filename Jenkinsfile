@@ -26,7 +26,7 @@ ng build --prod'''
         SW_PATH = credentials('sw-path')
       }
       steps {
-        sh 'cp -r dist/b4os-scholarly-wallet-client/* $SW_PATH'
+        sh 'cp -p -r dist/b4os-scholarly-wallet-client/* $SW_PATH'
       }
     }
   }

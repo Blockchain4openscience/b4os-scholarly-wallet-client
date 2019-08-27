@@ -100,6 +100,9 @@ export class BundleComponent implements OnInit, AfterViewInit {
     this.cy.edgehandles({
       handlePosition(node) {
         return 'right middle';
+      },
+      edgeType(sourceNode, targetNode) {
+        return sourceNode.edgesTo(targetNode).empty() ? 'flat' : null;
       }
     });
     this.cyLayout = this.cy.layout(this.layoutOptions);
@@ -115,7 +118,7 @@ export class BundleComponent implements OnInit, AfterViewInit {
         this.changed = true;
       }
     });
-    this.cy.$('node').on('grab', () => this.changed = true);
+    this.cy.$('node').on('grab', () => (this.changed = true));
     this.cy.resize();
     this.cy.fit(80);
     this.cy.center();
@@ -184,7 +187,7 @@ export class BundleComponent implements OnInit, AfterViewInit {
           name: this.metadata.controls.name.value,
           description: this.metadata.controls.description.value,
           diagram: this.cy.json(),
-          thumb: this.cy.png({full: false})
+          thumb: this.cy.png({ full: false })
         })
         .subscribe(result => console.log(result));
     } else {
@@ -193,7 +196,7 @@ export class BundleComponent implements OnInit, AfterViewInit {
           name: this.metadata.controls.name.value,
           description: this.metadata.controls.description.value,
           diagram: this.cy.json(),
-          thumb: this.cy.png({full: false}),
+          thumb: this.cy.png({ full: false }),
           status: 'unpublished'
         })
         .subscribe(result => {

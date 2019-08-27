@@ -177,6 +177,7 @@ export class BundleComponent implements OnInit, AfterViewInit {
 
   save() {
     this.cy.remove('.eh-handle');
+    this.updateLayout();
     if (this.id) {
       this.discos
         .update(this.id, {

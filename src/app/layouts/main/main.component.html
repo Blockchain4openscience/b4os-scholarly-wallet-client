@@ -9,15 +9,15 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         <img src='/assets/img/logo.png' class='logo'>
-        <span class="app-title">Scholarly Wallet</span>
+        <span class="app-title">Scholarly Wallet for the Journal of Research Objects</span>
         <span class="bar-spacer"></span>
         <a *ngIf="!isLoggedIn" mat-button [attr.href]="authUrl"><img alt="ORCID logo" src="/assets/img/orcid_icon.png" width="24" height="24" hspace="4" />LOGIN WITH ORCID</a>
         <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="userMenu"><mat-icon>perm_identity</mat-icon><span *ngIf="!(isHandset$ | async)">&nbsp;{{user.name}}</span></button>
         <mat-menu #userMenu="matMenu">
-          <button mat-menu-item>
+          <!-- <button mat-menu-item>
             <mat-icon>account_box</mat-icon>
             <span>Edit profile</span>
-          </button>
+          </button> -->
           <button mat-menu-item (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>
             <span>Logout</span>
@@ -33,16 +33,16 @@
       [opened]="(isHandset$ | async) === false">
       <mat-list>
         <mat-list-item class="center navbar-button">
-            <a mat-icon-button aria-label="Example icon-button with a menu" [routerLink]="[ '/research-objects' ]" routerLinkActive="active-list-item">
+            <a mat-icon-button aria-label="Example icon-button with a menu" [routerLink]="[ '/research-objects' ]" routerLinkActive="active-list-item" matTooltip="Research objects">
             <mat-icon class="navbar-icon" fontSet="fas" fontIcon="fa-cube"></mat-icon>
         </a>
  </mat-list-item>
-        <mat-list-item class="center navbar-button"><a mat-icon-button [routerLink]="[ '/bundles' ]" routerLinkActive="active-list-item">
+        <mat-list-item class="center navbar-button"><a mat-icon-button [routerLink]="[ '/bundles' ]" routerLinkActive="active-list-item" matTooltip="Research object bundles">
             <mat-icon class="navbar-icon" fontSet="fas" fontIcon="fa-cubes"></mat-icon>
         </a></mat-list-item>
-        <mat-list-item class="center navbar-button"><a mat-icon-button [routerLink]="[ '/explore' ]" routerLinkActive="active-list-item">
+        <!-- <mat-list-item class="center navbar-button"><a mat-icon-button [routerLink]="[ '/explore' ]" routerLinkActive="active-list-item" matTooltip="Explore">
             <mat-icon class="navbar-icon" fontSet="fas" fontIcon="fa-search"></mat-icon>
-        </a></mat-list-item>
+        </a></mat-list-item> -->
       </mat-list>
   </mat-sidenav>
   <mat-sidenav-content class="page-wrap">

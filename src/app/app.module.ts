@@ -117,7 +117,7 @@ import { BundleCardComponent } from './components/bundle-card/bundle-card.compon
     BundleResolver,
     HttpClientModule,
     { provide: HTTP_INTERCEPTORS, useClass: AuthErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

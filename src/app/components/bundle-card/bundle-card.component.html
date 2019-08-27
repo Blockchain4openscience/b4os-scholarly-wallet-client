@@ -18,14 +18,14 @@
     </div>
   </mat-card-content>
   <mat-action-list>
-    <a mat-mini-fab [routerLink]="['/bundle/' + bundle.id]" *ngIf="!bundle.doi">
+    <a mat-mini-fab [routerLink]="['/bundle/' + bundle.id]" *ngIf="!bundle.doi" matTooltip="Edit bundle">
       <mat-icon class="mat-18">create</mat-icon>
     </a>
-    <button mat-mini-fab (click)="publish(bundle)" *ngIf="!bundle.doi">
+    <button mat-mini-fab (click)="publish(bundle)" *ngIf="!bundle.doi" matTooltip="Publish to Zenodo">
       <mat-icon class="mat-18" >publish</mat-icon>
     </button>
-    <button mat-mini-fab>
+    <!-- <button mat-mini-fab matTooltip="Share">
       <mat-icon class="mat-18">share</mat-icon>
-    </button>
+    </button> -->
   </mat-action-list>
 </mat-card>

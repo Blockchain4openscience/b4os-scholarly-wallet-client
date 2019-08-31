@@ -12,7 +12,7 @@
         <span class="app-title">Scholarly Wallet for the Journal of Research Objects</span>
         <span class="bar-spacer"></span>
         <a *ngIf="!isLoggedIn" mat-button [attr.href]="authUrl"><img alt="ORCID logo" src="/assets/img/orcid_icon.png" width="24" height="24" hspace="4" />LOGIN WITH ORCID</a>
-        <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="userMenu"><mat-icon>perm_identity</mat-icon><span *ngIf="!(isHandset$ | async)">&nbsp;{{user.name}}</span></button>
+        <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="userMenu"><mat-icon>perm_identity</mat-icon><span *ngIf="!(isHandset$ | async)">&nbsp;{{user.name | titlecase}}</span></button>
         <mat-menu #userMenu="matMenu">
           <!-- <button mat-menu-item>
             <mat-icon>account_box</mat-icon>

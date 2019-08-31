@@ -54,6 +54,7 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BundlesComponent } from './pages/bundles/bundles.component';
 import { BundleCardComponent } from './components/bundle-card/bundle-card.component';
+import { BundleViewComponent } from './components/bundle-view/bundle-view.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { BundleCardComponent } from './components/bundle-card/bundle-card.compon
     ClaimResearchObjectComponent,
     ArticleCardComponent,
     BundlesComponent,
-    BundleCardComponent
+    BundleCardComponent,
+    BundleViewComponent
   ],
   imports: [
     BrowserModule,

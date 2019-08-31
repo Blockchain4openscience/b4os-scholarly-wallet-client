@@ -1,0 +1,89 @@
+
+<div class="content">
+  <div class="bundle-name">
+    <h1 class="mat-headline">{{disco.name | titlecase}}</h1>
+    <p class="mat-subheading-2">{{disco.description}}</p>
+    <a [attr.href]="'https://sandbox.zenodo.org/record/' + disco.zenodo_id" target="_blank" class="mat-subheading-1">{{disco.doi}}</a>
+  </div>
+  <div class="page-wrap">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">share</mat-icon>&nbsp;Diagram
+        </ng-template>
+        <div id="paper-container" class="mat-elevation-z1">
+          <div id="cy"></div>
+        </div>
+
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">table_chart</mat-icon>&nbsp;
+          Table
+        </ng-template>
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" matSort>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name | titlecase}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="source">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Source</th>
+          <td mat-cell *matCellDef="let element"> <a [attr.href]="element.url" target="_blank">{{element.source | titlecase}}</a> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cites">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cites </th>
+          <td mat-cell *matCellDef="let element"> {{element.cites.length}} </td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+            <div class="example-element-detail"
+            [@detailExpand]="element == expandedObject ? 'expanded' : 'collapsed'">
+            <div class="example-element-diagram">
+              <mat-icon fontSet="ai" fontIcon="ai-figshare" class="diagram" *ngIf="element.source === 'figshare'"></mat-icon>
+              <mat-icon fontSet="fab" fontIcon="fa-github" class="diagram"  *ngIf="element.source === 'github'"></mat-icon>
+              <mat-icon fontSet="ai" fontIcon="ai-orcid" class="diagram" *ngIf="element.source === 'orcid'"></mat-icon>
+            </div>
+            <div class="example-element-description">
+              <table class="nested" cellspacing="10">
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                </tr>
+                <tr>
+                  <td><a href="http://purl.org/dc/terms/creator" target="_blank">creator</a></td>
+                  <td><a [attr.href]="'https://orcid.org/' + disco.owner">orcid.org/{{disco.owner}}</a></td>
+                </tr>
+                <tr>
+                  <td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" target="_blank">type</a></td>
+                  <td><a [attr.href]="FABIO_TYPES[element.source].url">{{FABIO_TYPES[element.source].label}}</a></td>
+                </tr>
+                <tr *ngFor="let citedId of element.cites">
+                  <td><a href="http://purl.org/spar/cito/cites" target="_blank">cites</a></td>
+                  <td>{{citedId}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedObject === element"
+      (click)="expandedObject = expandedObject === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+
+</mat-tab>
+</mat-tab-group>
+</div>
+</div>

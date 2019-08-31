@@ -7,8 +7,8 @@ export const environment = {
   baseUrl: 'http://localhost:4200/',
   serviceUrl: 'http://localhost:8000',
   orcidAuthUrl: 'https://orcid.org/oauth/authorize?client_id=APP-NNXW1QUFSJRHMC0C&response_type=code&scope=/authenticate&redirect_uri=https://localhost:4200/login',
-  githubAuthUrl: 'https://github.com/login/oauth/authorize?scope=user:email&client_id=8442d1cbd0110eb451db',
-  figshareAuthUrl: 'https://figshare.com/account/applications/authorize?client_id=a2d29a16e44e944484050e59f5e066f9517e9a80&redirect_uri=https%3A%2F%2Flocalhost%3A4200%2Fresearch-objects%2Ffigshare&response_type=code'
+  githubAuthUrl: 'https://github.com/login/oauth/authorize?scope=user:email&client_id=3d6b5002cc968c9aeed7',
+  figshareAuthUrl: 'https://figshare.com/account/applications/authorize?client_id=1a7f3f6eb3a7d6a5a07565e18181b028f3e95e2f&redirect_uri=https%3A%2F%2Flocalhost%3A4200%2Fresearch-objects%2Ffigshare&response_type=code'
 };
 
 /*

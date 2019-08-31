@@ -21,9 +21,13 @@
     <a mat-mini-fab [routerLink]="['/bundle/' + bundle.id]" *ngIf="!bundle.doi" matTooltip="Edit bundle">
       <mat-icon class="mat-18">create</mat-icon>
     </a>
+    <a mat-mini-fab [routerLink]="['/bundle/view/' + bundle.id]" *ngIf="bundle.doi" matTooltip="View bundle">
+      <mat-icon class="mat-18">remove_red_eye</mat-icon>
+    </a>
     <button mat-mini-fab (click)="publish(bundle)" *ngIf="!bundle.doi" matTooltip="Publish to Zenodo">
       <mat-icon class="mat-18" >publish</mat-icon>
     </button>
+
     <!-- <button mat-mini-fab matTooltip="Share">
       <mat-icon class="mat-18">share</mat-icon>
     </button> -->

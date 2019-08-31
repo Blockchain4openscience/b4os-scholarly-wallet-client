@@ -1,3 +1,4 @@
+import { BundleViewComponent } from './components/bundle-view/bundle-view.component';
 import { BundlesComponent } from './pages/bundles/bundles.component';
 import { RepositoriesTableComponent } from './components/repositories-table/repositories-table.component';
 import { BundleComponent } from './components/bundle/bundle.component';
@@ -60,6 +61,12 @@ const routes: Routes = [
       {
         path: 'bundle/:id',
         component: BundleComponent,
+        resolve: { disco: BundleResolver },
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'bundle/view/:id',
+        component: BundleViewComponent,
         resolve: { disco: BundleResolver },
         canActivate: [AuthGuard]
       },
